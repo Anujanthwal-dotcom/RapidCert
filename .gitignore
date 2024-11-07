@@ -1,0 +1,10 @@
+certificate-frontend/node_modules/
+
+.vscode/
+
+
+email-certificate/HELP.md
+email-certificate/target/
+email-certificate/!.mvn/wrapper/maven-wrapper.jar
+email-certificate/!**/src/main/**/target/
+email-certificate/!**/src/test/**/target/
