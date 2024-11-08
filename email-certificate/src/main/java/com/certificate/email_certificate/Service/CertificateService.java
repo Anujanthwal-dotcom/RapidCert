@@ -17,8 +17,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
@@ -33,17 +31,12 @@ public class CertificateService {
     private String certificatePath;
 
     @Async
-    public void sendCertificate(MultipartFile excelFile, MultipartFile templateFile) throws IllegalStateException, IOException, MessagingException {
-        if (excelFile == null || templateFile == null) {
+    public void sendCertificate(File excelfile, File templatefile) throws IllegalStateException, IOException, MessagingException {
+        if (excelfile == null || templatefile == null) {
             return;
         }
 
-        File excelfile = new File(certificatePath + excelFile.getOriginalFilename());
-        excelFile.transferTo(excelfile);
-        File templatefile = new File(certificatePath + templateFile.getOriginalFilename());
-        templateFile.transferTo(templatefile);
-
-        System.out.println("excelfile: " + excelfile);
+        
         
         try(
             FileInputStream inputStream = new FileInputStream(excelfile);
